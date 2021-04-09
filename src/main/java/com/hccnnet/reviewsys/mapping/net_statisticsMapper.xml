@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hccnnet.reviewsys.IDao.net_statisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.hccnnet.reviewsys.domain.net_statistics" >
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="data_time" property="dataTime" jdbcType="DATE" />
+    <result column="statistics" property="statistics" jdbcType="VARCHAR" />
+    <result column="DA" property="da" jdbcType="VARCHAR" />
+    <result column="JCJ" property="jcj" jdbcType="VARCHAR" />
+    <result column="YZ" property="yz" jdbcType="VARCHAR" />
+    <result column="DH" property="dh" jdbcType="VARCHAR" />
+    <result column="ND" property="nd" jdbcType="VARCHAR" />
+    <result column="HJ" property="hj" jdbcType="VARCHAR" />
+    <result column="DL" property="dl" jdbcType="VARCHAR" />
+    <result column="LC" property="lc" jdbcType="VARCHAR" />
+    <result column="BM" property="bm" jdbcType="VARCHAR" />
+    <result column="TE" property="te" jdbcType="VARCHAR" />
+    <result column="FS" property="fs" jdbcType="VARCHAR" />
+    <result column="ZQ" property="zq" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_num, data_time, statistics,DA,JCJ,YZ,DH,ND,HJ,DL,LC,BM,TE,FS,ZQ,total
+  </sql>
+  <insert id="insert" parameterType="com.hccnnet.reviewsys.domain.net_statistics" >
+    insert into wls_net_monthly_statistics (order_num, data_time, statistics, 
+      DA, JCJ, YZ, DH, 
+      ND, HJ, DL, LC, 
+      BM, TE, FS, ZQ, 
+      total)
+    values (#{orderNum,jdbcType=VARCHAR}, #{dataTime,jdbcType=DATE}, #{statistics,jdbcType=VARCHAR}, 
+      #{da,jdbcType=VARCHAR}, #{jcj,jdbcType=VARCHAR}, #{yz,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, 
+      #{nd,jdbcType=VARCHAR}, #{hj,jdbcType=VARCHAR}, #{dl,jdbcType=VARCHAR}, #{lc,jdbcType=VARCHAR}, 
+      #{bm,jdbcType=VARCHAR}, #{te,jdbcType=VARCHAR}, #{fs,jdbcType=VARCHAR}, #{zq,jdbcType=VARCHAR}, 
+      #{total,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hccnnet.reviewsys.domain.net_statistics" >
+    insert into wls_net_monthly_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="dataTime != null" >
+        data_time,
+      </if>
+      <if test="statistics != null" >
+        statistics,
+      </if>
+      <if test="da != null" >
+        DA,
+      </if>
+      <if test="jcj != null" >
+        JCJ,
+      </if>
+      <if test="yz != null" >
+        YZ,
+      </if>
+      <if test="dh != null" >
+        DH,
+      </if>
+      <if test="nd != null" >
+        ND,
+      </if>
+      <if test="hj != null" >
+        HJ,
+      </if>
+      <if test="dl != null" >
+        DL,
+      </if>
+      <if test="lc != null" >
+        LC,
+      </if>
+      <if test="bm != null" >
+        BM,
+      </if>
+      <if test="te != null" >
+        TE,
+      </if>
+      <if test="fs != null" >
+        FS,
+      </if>
+      <if test="zq != null" >
+        ZQ,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="dataTime != null" >
+        #{dataTime,jdbcType=DATE},
+      </if>
+      <if test="statistics != null" >
+        #{statistics,jdbcType=VARCHAR},
+      </if>
+      <if test="da != null" >
+        #{da,jdbcType=VARCHAR},
+      </if>
+      <if test="jcj != null" >
+        #{jcj,jdbcType=VARCHAR},
+      </if>
+      <if test="yz != null" >
+        #{yz,jdbcType=VARCHAR},
+      </if>
+      <if test="dh != null" >
+        #{dh,jdbcType=VARCHAR},
+      </if>
+      <if test="nd != null" >
+        #{nd,jdbcType=VARCHAR},
+      </if>
+      <if test="hj != null" >
+        #{hj,jdbcType=VARCHAR},
+      </if>
+      <if test="dl != null" >
+        #{dl,jdbcType=VARCHAR},
+      </if>
+      <if test="lc != null" >
+        #{lc,jdbcType=VARCHAR},
+      </if>
+      <if test="bm != null" >
+        #{bm,jdbcType=VARCHAR},
+      </if>
+      <if test="te != null" >
+        #{te,jdbcType=VARCHAR},
+      </if>
+      <if test="fs != null" >
+        #{fs,jdbcType=VARCHAR},
+      </if>
+      <if test="zq != null" >
+        #{zq,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from wls_net_monthly_statistics
+    ORDER BY data_time DESC
+  </select>
+  <select id="selectCount"  resultType="java.lang.Integer" >
+    select count(order_num) from wls_net_monthly_statistics;
+  </select>
+</mapper>

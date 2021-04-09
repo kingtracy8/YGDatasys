@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一个 ECharts 实例</title>
+    <link rel="stylesheet" href="/kit_admin/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/kit_admin/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="/kit_admin/css/nprogress.css">
+
+</head>
+<body>
+
+
+<div class="layui-col-md12">
+
+
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md3">
+                        <div class="layui-card">
+                            <div class="layui-card-body">
+                                <SPAN ID="time"></SPAN>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md2">
+                        <div class="layui-card">
+                            <div class="layui-card-body">
+                                数据来源:BSS3.0
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-card">
+                            <div class="layui-card-body">
+                                月度宽带竣工总数为截止时间订单已竣工的数据，包含隔天或多天竣工量。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3">
+                        <div class="layui-card">
+                            <div class="layui-card-body">
+                                宽带激活数即新装宽带竣工后有上网记录的数量。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md8">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md6">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">月度宽带竣工占比</div>
+                                    <div class="layui-card-body">
+                                        <div id="container1" style="height:350px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md6">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">月度宽带激活数</div>
+                                    <div class="layui-card-body">
+                                        <div id="main" style="height:350px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">月度宽带销串情况</div>
+                                    <div class="layui-card-body">
+                                        <div id="main1" style="height:350px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">月度宽带数据统计</div>
+                                    <div class="layui-card-body">
+                                        <table id="demo_hash" lay-filter="test_hash"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">快捷入口</div>
+                                    <div class="layui-card-body">
+                                        <div class="layui-row layui-col-space5">
+                                            <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+                                                <div style="height:75px;  background-color:#ccc;"></div>
+                                            </div>
+                                            <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+                                                <div style="height:75px;  background-color:#ccc;"></div>
+                                            </div>
+                                            <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+                                                <div style="height:75px;  background-color:#ccc;"></div>
+                                            </div>
+                                            <div class="layui-col-xs4 layui-col-sm7 layui-col-md8">
+                                                <div style="height:75px;  background-color:#ccc;"></div>
+                                            </div>
+                                            <div class="layui-col-xs4 layui-col-sm5 layui-col-md4">
+                                                <div style="height:75px;  background-color:#ccc;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">版本信息</div>
+                                    <div class="layui-card-body">
+                                        <table class="layui-table">
+                                            <colgroup>
+                                                <col width="150">
+                                                <col>
+                                            </colgroup>
+                                            <tbody>
+                                            <tr>
+                                                <td>版本号</td>
+                                                <td>v2.0.0-beta1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>依赖</td>
+                                                <td>layui v2.3.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>作者</td>
+                                                <td>业务管理中心</td>
+                                            </tr>
+                                            <tr>
+                                                <td>邮箱</td>
+                                                <td>hcdx.yeguanzhongxin.cn@163.com</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">关于</div>
+                                    <div class="layui-card-body">
+                                        <p>各分公司、市公司各部门：
+                                        </p>
+
+                                        <ul>
+                                            <li>目前已出现WPS办公软件漏洞，利用xls，doc文件进行攻击。</li>
+                                            <li>被攻击的表现：表格，文档点击打开后windows开始强制更新。</li>
+                                            <li>
+                                                请各位同事提高安全意识，谨慎打开一切来自办公网外部的WPS公开文档，内外网禁止交叉传输数据，务必使用OA统一邮箱、RTX进行内部文档传输并及时清理。
+                                            </li>
+                                            <li>河池HW指挥部联系人：</li>
+                                            <li>郑 峰 18977841213</li>
+                                            <li>吴松霖 18977846681</li>
+                                            <li>苏 雅 18977149882</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+
+<!--&lt;!&ndash; build:js &ndash;&gt;-->
+<!--<script src="/kit_admin/lib/polyfill.min.js"></script>-->
+<!--<script src="/kit_admin/lib/layui/layui.js"></script>-->
+<!--<script src="/kit_admin/mockjs/mockjs-config.js"></script>-->
+<!--&lt;!&ndash; endbuild &ndash;&gt;-->
+<!--&lt;!&ndash;引入jquery&ndash;&gt;-->
+<!--<script src="../../lay/modules/jquery.js"></script>-->
+<!--&lt;!&ndash;引入layui&ndash;&gt;-->
+<!--<script src="/kit_admin/lib/layui/layui.js" charset="utf-8"></script>-->
+<!--<script src="/kit_admin/js/echarts.js"></script>-->
+<!--&lt;!&ndash; build:use &ndash;&gt;-->
+
+<!-- endbuild -->
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+
+//      初始化时间
+        var myDate = new Date;
+        var year = myDate.getFullYear(); //获取当前年
+        var mon = myDate.getMonth() + 1; //获取当前月
+        var date = myDate.getDate(); //获取当前日
+
+        var week = myDate.getDay();
+        var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+
+        $("#time").html(year + "年" + mon + "月" + date + "日 " + weeks[week]);
+
+
+
+    });
+
+
+    layui.config({
+        base: '/src/js/'
+    }).use(['jquery', 'table'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            table = layui.table;
+
+        var intervalIndex = setInterval(function () {
+            if (echarts === undefined) {
+                return;
+            }
+            // 如果eacharts加载完成，则清除循环
+            clearInterval(intervalIndex);
+            //echarts
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            var option = {};
+            // 使用刚指定的配置项和数据显示图表.
+
+            // echarts 1
+            var myChart1 = echarts.init(document.getElementById("container1"));
+            var app1 = {};
+            option1 = null;
+            app1.title = '极坐标系下的堆叠柱状图';
+
+            if (option1 && typeof option1 === "object") {
+                myChart1.setOption(option1, true);
+            }
+
+//    异步加载数据后设置echar
+            $.ajax({
+                url: "http://134.208.128.210:8080/net/tbinterface?page=1&limit=1" + "&a=" + Math.random(),
+                type: "GET",
+                async: 'false',
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8', //contentType很重要
+                success: function (result) {
+
+
+                    myChart.setOption({
+                        title: {
+                            text: '月度宽带激活量'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data: ['宽带激活量']
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['都安', '金城', '宜州', '大化', '南丹', '环江', '东兰', '罗城', '巴马', '天峨', '凤山', '政企']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            name: '宽带激活量',
+                            type: 'bar',
+                            data: [result.data[2].da, result.data[2].jcj, result.data[2].yz, result.data[2].dh, result.data[2].nd, result.data[2].hj, result.data[2].dl, result.data[2].lc, result.data[2].bm, result.data[2].te, result.data[2].fs, result.data[2].zq]
+                        }]
+                    });
+
+
+                    //初始化饼图
+                    myChart1.setOption({
+                        title: {
+                            text: '月度宽带竣工占比',
+                            x: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left',
+                            data: ['都安', '金城江', '宜州', '大化', '南丹', '环江', '东兰', '罗城', '巴马', '天峨', '凤山', '政企客户中心']
+                        },
+                        series: [{
+                            name: '月度宽带竣工',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            data: [{
+                                value: result.data[0].da,
+                                name: '都安'
+                            }, {
+                                value: result.data[0].jcj,
+                                name: '金城江'
+                            }, {
+                                value: result.data[0].yz,
+                                name: '宜州'
+                            }, {
+                                value: result.data[0].dh,
+                                name: '大化'
+                            }, {
+                                value: result.data[0].nd,
+                                name: '南丹'
+                            }, {
+                                value: result.data[0].hj,
+                                name: '环江'
+                            }, {
+                                value: result.data[0].dl,
+                                name: '东兰'
+                            }, {
+                                value: result.data[0].lc,
+                                name: '罗城'
+                            }, {
+                                value: result.data[0].bm,
+                                name: '巴马'
+                            }, {
+                                value: result.data[0].te,
+                                name: '天峨'
+                            }, {
+                                value: result.data[0].fs,
+                                name: '凤山'
+                            }, {
+                                value: result.data[0].zq,
+                                name: '政企客户中心'
+                            }],
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }]
+                    });
+
+
+                    //  myChart2 堆叠图
+                    myChart2.setOption({
+                        title: {
+                            text: '月度宽带销串情况'  //月宽带竣工
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                label: {
+                                    backgroundColor: '#6a7985'
+                                }
+                            }
+                        },
+                        legend: {
+                            data: [result.data[1].statistics]
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: [{
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['都安', '金城江', '宜州', '大化', '南丹', '环江', '东兰', '罗城', '巴马', '天峨', '凤山', '政企客户中心']
+                        }],
+                        yAxis: [{
+                            type: 'value'
+                        }],
+                        series: [{
+                            name: result.data[1].statistics,
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {
+                                normal: {}
+                            },
+                            data: [result.data[1].da, result.data[1].jcj, result.data[1].yz, result.data[1].dh, result.data[1].nd, result.data[1].hj, result.data[1].dl, result.data[1].lc, result.data[1].bm, result.data[1].te, result.data[1].fs, result.data[1].zq]
+                        }]
+                    });
+
+                }
+
+            });
+
+
+            var myChart2 = echarts.init(document.getElementById("main1"));
+            var app2 = {};
+            option2 = null;
+            option2 = {
+                title: {
+                    text: '日发展量'
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                }
+            };
+            if (option2 && typeof option2 === "object") {
+                myChart2.setOption(option2, true);
+            }
+
+            $(window).on('resize', function () {
+                myChart.resize();
+                myChart1.resize();
+                myChart2.resize();
+            });
+        }, 50);
+
+        //第一个实例
+        table.render({
+            method: 'get',
+            done: function () {
+                $('#demo_hash').next().css('height', 'auto');
+            },
+            limit: 20,
+            elem: '#demo_hash',
+            height: 420,
+            url: 'http://134.208.128.210:8080/net/tbinterface', //数据接口
+            page: true, //开启分页
+            cols: [
+                [ //表头
+
+                    {
+                        field: 'statistics',
+                        title: '发展数量',
+                        width: 130,
+                        sort: true
+                    }, {
+                    field: 'da',
+                    title: '都安',
+                    width: 70
+                }, {
+                    field: 'jcj',
+                    title: '金城江',
+                    width: 75
+                }, {
+                    field: 'yz',
+                    title: '宜州',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'dh',
+                    title: '大化',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'nd',
+                    title: '南丹',
+                    width: 75
+                }, {
+                    field: 'hj',
+                    title: '环江',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'dl',
+                    title: '东兰',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'lc',
+                    title: '罗城',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'bm',
+                    title: '巴马',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'te',
+                    title: '天峨',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'fs',
+                    title: '凤山',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'zq',
+                    title: '政企',
+                    width: 75,
+                    sort: true
+                }, {
+                    field: 'total',
+                    title: '合计',
+                    width: 75,
+                    sort: true
+                }
+                ]
+            ]
+        });
+    });
+
+
+</script>
+
+
+</html>

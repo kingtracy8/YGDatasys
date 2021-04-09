@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hccnnet.reviewsys.IDao.WorkReportMapper" >
+  <resultMap id="BaseResultMap" type="com.hccnnet.reviewsys.domain.WorkReport" >
+    <id column="w_id" property="wId" jdbcType="INTEGER" />
+    <result column="ep_id" property="epId" jdbcType="INTEGER" />
+    <result column="ep_name" property="epName" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="t1_id" property="t1Id" jdbcType="INTEGER" />
+    <result column="t1_name" property="t1Name" jdbcType="VARCHAR" />
+    <result column="t2_id" property="t2Id" jdbcType="INTEGER" />
+    <result column="t2_name" property="t2Name" jdbcType="VARCHAR" />
+    <result column="leader_id" property="leaderId" jdbcType="INTEGER" />
+    <result column="leader_name" property="leaderName" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="experience" property="experience" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="fraction" property="fraction" jdbcType="INTEGER" />
+    <result column="complete_time" property="completeTime" jdbcType="TIMESTAMP" />
+    <result column="attribute1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="attribute2" property="attribute2" jdbcType="VARCHAR" />
+    <result column="attribute3" property="attribute3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    w_id, ep_id, ep_name, gender, school, profession, dept_id, dept_name, t1_id, t1_name, 
+    t2_id, t2_name, leader_id, leader_name, content, experience, comments, fraction, 
+    complete_time, attribute1, attribute2, attribute3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_report
+    where w_id = #{wId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work_report
+    where w_id = #{wId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hccnnet.reviewsys.domain.WorkReport" >
+    insert into work_report (w_id, ep_id, ep_name, 
+      gender, school, profession, 
+      dept_id, dept_name, t1_id, 
+      t1_name, t2_id, t2_name, 
+      leader_id, leader_name, content, 
+      experience, comments, fraction, 
+      complete_time, attribute1, attribute2, 
+      attribute3)
+    values (#{wId,jdbcType=INTEGER}, #{epId,jdbcType=INTEGER}, #{epName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=CHAR}, #{school,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
+      #{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{t1Id,jdbcType=INTEGER}, 
+      #{t1Name,jdbcType=VARCHAR}, #{t2Id,jdbcType=INTEGER}, #{t2Name,jdbcType=VARCHAR}, 
+      #{leaderId,jdbcType=INTEGER}, #{leaderName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{experience,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{fraction,jdbcType=INTEGER}, 
+      #{completeTime,jdbcType=TIMESTAMP}, #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, 
+      #{attribute3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hccnnet.reviewsys.domain.WorkReport" >
+    insert into work_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wId != null" >
+        w_id,
+      </if>
+      <if test="epId != null" >
+        ep_id,
+      </if>
+      <if test="epName != null" >
+        ep_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="t1Id != null" >
+        t1_id,
+      </if>
+      <if test="t1Name != null" >
+        t1_name,
+      </if>
+      <if test="t2Id != null" >
+        t2_id,
+      </if>
+      <if test="t2Name != null" >
+        t2_name,
+      </if>
+      <if test="leaderId != null" >
+        leader_id,
+      </if>
+      <if test="leaderName != null" >
+        leader_name,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="experience != null" >
+        experience,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="fraction != null" >
+        fraction,
+      </if>
+      <if test="completeTime != null" >
+        complete_time,
+      </if>
+      <if test="attribute1 != null" >
+        attribute1,
+      </if>
+      <if test="attribute2 != null" >
+        attribute2,
+      </if>
+      <if test="attribute3 != null" >
+        attribute3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wId != null" >
+        #{wId,jdbcType=INTEGER},
+      </if>
+      <if test="epId != null" >
+        #{epId,jdbcType=INTEGER},
+      </if>
+      <if test="epName != null" >
+        #{epName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="t1Id != null" >
+        #{t1Id,jdbcType=INTEGER},
+      </if>
+      <if test="t1Name != null" >
+        #{t1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="t2Id != null" >
+        #{t2Id,jdbcType=INTEGER},
+      </if>
+      <if test="t2Name != null" >
+        #{t2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null" >
+        #{leaderId,jdbcType=INTEGER},
+      </if>
+      <if test="leaderName != null" >
+        #{leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null" >
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="fraction != null" >
+        #{fraction,jdbcType=INTEGER},
+      </if>
+      <if test="completeTime != null" >
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null" >
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hccnnet.reviewsys.domain.WorkReport" >
+    update work_report
+    <set >
+      <if test="epId != null" >
+        ep_id = #{epId,jdbcType=INTEGER},
+      </if>
+      <if test="epName != null" >
+        ep_name = #{epName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="t1Id != null" >
+        t1_id = #{t1Id,jdbcType=INTEGER},
+      </if>
+      <if test="t1Name != null" >
+        t1_name = #{t1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="t2Id != null" >
+        t2_id = #{t2Id,jdbcType=INTEGER},
+      </if>
+      <if test="t2Name != null" >
+        t2_name = #{t2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null" >
+        leader_id = #{leaderId,jdbcType=INTEGER},
+      </if>
+      <if test="leaderName != null" >
+        leader_name = #{leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null" >
+        experience = #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="fraction != null" >
+        fraction = #{fraction,jdbcType=INTEGER},
+      </if>
+      <if test="completeTime != null" >
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null" >
+        attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        attribute3 = #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where w_id = #{wId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hccnnet.reviewsys.domain.WorkReport" >
+    update work_report
+    set ep_id = #{epId,jdbcType=INTEGER},
+      ep_name = #{epName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      school = #{school,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      t1_id = #{t1Id,jdbcType=INTEGER},
+      t1_name = #{t1Name,jdbcType=VARCHAR},
+      t2_id = #{t2Id,jdbcType=INTEGER},
+      t2_name = #{t2Name,jdbcType=VARCHAR},
+      leader_id = #{leaderId,jdbcType=INTEGER},
+      leader_name = #{leaderName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      fraction = #{fraction,jdbcType=INTEGER},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      attribute3 = #{attribute3,jdbcType=VARCHAR}
+    where w_id = #{wId,jdbcType=INTEGER}
+  </update>
+  <select id="selectCommitDuplicate" resultType="java.lang.Integer">
+    select
+    count(w.dept_id)
+    from work_report w
+    where w.ep_id = #{param1}
+    AND w.dept_id = #{param2}
+  </select>
+  <select id="selectAllWr" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from work_report
+    LIMIT #{start},#{offset}
+  </select>
+  <select id="selectAllWrCount"  resultType="java.lang.Integer" >
+    select
+   COUNT(w_id)
+    from work_report
+  </select>
+</mapper>

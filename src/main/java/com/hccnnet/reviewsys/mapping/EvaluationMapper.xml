@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hccnnet.reviewsys.IDao.EvaluationMapper" >
+  <resultMap id="BaseResultMap" type="com.hccnnet.reviewsys.domain.Evaluation" >
+    <id column="el_id" property="elId" jdbcType="INTEGER" />
+    <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="e_id" property="eId" jdbcType="INTEGER" />
+    <result column="e_name" property="eName" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="INTEGER" />
+    <result column="duty_memo" property="dutyMemo" jdbcType="VARCHAR" />
+    <result column="positive" property="positive" jdbcType="INTEGER" />
+    <result column="positive_memo" property="positiveMemo" jdbcType="VARCHAR" />
+    <result column="discipline" property="discipline" jdbcType="INTEGER" />
+    <result column="discipline_memo" property="disciplineMemo" jdbcType="VARCHAR" />
+    <result column="extraction" property="extraction" jdbcType="INTEGER" />
+    <result column="extraction_memo" property="extractionMemo" jdbcType="VARCHAR" />
+    <result column="understanding" property="understanding" jdbcType="INTEGER" />
+    <result column="understanding_memo" property="understandingMemo" jdbcType="VARCHAR" />
+    <result column="expression" property="expression" jdbcType="INTEGER" />
+    <result column="expression_memo" property="expressionMemo" jdbcType="VARCHAR" />
+    <result column="plan" property="plan" jdbcType="INTEGER" />
+    <result column="plan_memo" property="planMemo" jdbcType="VARCHAR" />
+    <result column="cooperation" property="cooperation" jdbcType="INTEGER" />
+    <result column="cooperation_memo" property="cooperationMemo" jdbcType="VARCHAR" />
+    <result column="other" property="other" jdbcType="INTEGER" />
+    <result column="other_memo" property="otherMemo" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="INTEGER" />
+    <result column="t1_id" property="t1Id" jdbcType="INTEGER" />
+    <result column="t1_name" property="t1Name" jdbcType="VARCHAR" />
+    <result column="t1_review" property="t1Review" jdbcType="VARCHAR" />
+    <result column="t1_ischeck" property="t1Ischeck" jdbcType="INTEGER" />
+    <result column="t1_checktime" property="t1Checktime" jdbcType="TIMESTAMP" />
+    <result column="t2_id" property="t2Id" jdbcType="INTEGER" />
+    <result column="t2_name" property="t2Name" jdbcType="VARCHAR" />
+    <result column="t2_review" property="t2Review" jdbcType="VARCHAR" />
+    <result column="t2_ischeck" property="t2Ischeck" jdbcType="INTEGER" />
+    <result column="t2_checktime" property="t2Checktime" jdbcType="TIMESTAMP" />
+    <result column="dept_leader_id" property="deptLeaderId" jdbcType="INTEGER" />
+    <result column="dept_leader_name" property="deptLeaderName" jdbcType="VARCHAR" />
+    <result column="dept_leader_review" property="deptLeaderReview" jdbcType="VARCHAR" />
+    <result column="dept_leader_ischeck" property="deptLeaderIscheck" jdbcType="INTEGER" />
+    <result column="dept_leader_checktime" property="deptLeaderChecktime" jdbcType="TIMESTAMP" />
+    <result column="attribute1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="attribute2" property="attribute2" jdbcType="VARCHAR" />
+    <result column="attribute3" property="attribute3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    el_id, dept_id, dept_name, e_id, e_name, duty, duty_memo, positive, positive_memo, 
+    discipline, discipline_memo, extraction, extraction_memo, understanding, understanding_memo, 
+    expression, expression_memo, plan, plan_memo, cooperation, cooperation_memo, other, 
+    other_memo, total, t1_id, t1_name, t1_review, t1_ischeck, t1_checktime, t2_id, t2_name, 
+    t2_review, t2_ischeck, t2_checktime, dept_leader_id, dept_leader_name, dept_leader_review, 
+    dept_leader_ischeck, dept_leader_checktime, attribute1, attribute2, attribute3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation
+    where el_id = #{elId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from evaluation
+    where el_id = #{elId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hccnnet.reviewsys.domain.Evaluation" >
+    insert into evaluation (el_id, dept_id, dept_name, 
+      e_id, e_name, duty, duty_memo, 
+      positive, positive_memo, discipline, 
+      discipline_memo, extraction, extraction_memo, 
+      understanding, understanding_memo, expression, 
+      expression_memo, plan, plan_memo, 
+      cooperation, cooperation_memo, other, 
+      other_memo, total, t1_id, 
+      t1_name, t1_review, t1_ischeck, 
+      t1_checktime, t2_id, t2_name, 
+      t2_review, t2_ischeck, t2_checktime, 
+      dept_leader_id, dept_leader_name, dept_leader_review, 
+      dept_leader_ischeck, dept_leader_checktime, 
+      attribute1, attribute2, attribute3
+      )
+    values (#{elId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, 
+      #{eId,jdbcType=INTEGER}, #{eName,jdbcType=VARCHAR}, #{duty,jdbcType=INTEGER}, #{dutyMemo,jdbcType=VARCHAR}, 
+      #{positive,jdbcType=INTEGER}, #{positiveMemo,jdbcType=VARCHAR}, #{discipline,jdbcType=INTEGER}, 
+      #{disciplineMemo,jdbcType=VARCHAR}, #{extraction,jdbcType=INTEGER}, #{extractionMemo,jdbcType=VARCHAR}, 
+      #{understanding,jdbcType=INTEGER}, #{understandingMemo,jdbcType=VARCHAR}, #{expression,jdbcType=INTEGER}, 
+      #{expressionMemo,jdbcType=VARCHAR}, #{plan,jdbcType=INTEGER}, #{planMemo,jdbcType=VARCHAR}, 
+      #{cooperation,jdbcType=INTEGER}, #{cooperationMemo,jdbcType=VARCHAR}, #{other,jdbcType=INTEGER}, 
+      #{otherMemo,jdbcType=VARCHAR}, #{total,jdbcType=INTEGER}, #{t1Id,jdbcType=INTEGER}, 
+      #{t1Name,jdbcType=VARCHAR}, #{t1Review,jdbcType=VARCHAR}, #{t1Ischeck,jdbcType=INTEGER}, 
+      #{t1Checktime,jdbcType=TIMESTAMP}, #{t2Id,jdbcType=INTEGER}, #{t2Name,jdbcType=VARCHAR}, 
+      #{t2Review,jdbcType=VARCHAR}, #{t2Ischeck,jdbcType=INTEGER}, #{t2Checktime,jdbcType=TIMESTAMP}, 
+      #{deptLeaderId,jdbcType=INTEGER}, #{deptLeaderName,jdbcType=VARCHAR}, #{deptLeaderReview,jdbcType=VARCHAR}, 
+      #{deptLeaderIscheck,jdbcType=INTEGER}, #{deptLeaderChecktime,jdbcType=TIMESTAMP}, 
+      #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, #{attribute3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hccnnet.reviewsys.domain.Evaluation" >
+    insert into evaluation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="elId != null" >
+        el_id,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="eId != null" >
+        e_id,
+      </if>
+      <if test="eName != null" >
+        e_name,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="dutyMemo != null" >
+        duty_memo,
+      </if>
+      <if test="positive != null" >
+        positive,
+      </if>
+      <if test="positiveMemo != null" >
+        positive_memo,
+      </if>
+      <if test="discipline != null" >
+        discipline,
+      </if>
+      <if test="disciplineMemo != null" >
+        discipline_memo,
+      </if>
+      <if test="extraction != null" >
+        extraction,
+      </if>
+      <if test="extractionMemo != null" >
+        extraction_memo,
+      </if>
+      <if test="understanding != null" >
+        understanding,
+      </if>
+      <if test="understandingMemo != null" >
+        understanding_memo,
+      </if>
+      <if test="expression != null" >
+        expression,
+      </if>
+      <if test="expressionMemo != null" >
+        expression_memo,
+      </if>
+      <if test="plan != null" >
+        plan,
+      </if>
+      <if test="planMemo != null" >
+        plan_memo,
+      </if>
+      <if test="cooperation != null" >
+        cooperation,
+      </if>
+      <if test="cooperationMemo != null" >
+        cooperation_memo,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+      <if test="otherMemo != null" >
+        other_memo,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="t1Id != null" >
+        t1_id,
+      </if>
+      <if test="t1Name != null" >
+        t1_name,
+      </if>
+      <if test="t1Review != null" >
+        t1_review,
+      </if>
+      <if test="t1Ischeck != null" >
+        t1_ischeck,
+      </if>
+      <if test="t1Checktime != null" >
+        t1_checktime,
+      </if>
+      <if test="t2Id != null" >
+        t2_id,
+      </if>
+      <if test="t2Name != null" >
+        t2_name,
+      </if>
+      <if test="t2Review != null" >
+        t2_review,
+      </if>
+      <if test="t2Ischeck != null" >
+        t2_ischeck,
+      </if>
+      <if test="t2Checktime != null" >
+        t2_checktime,
+      </if>
+      <if test="deptLeaderId != null" >
+        dept_leader_id,
+      </if>
+      <if test="deptLeaderName != null" >
+        dept_leader_name,
+      </if>
+      <if test="deptLeaderReview != null" >
+        dept_leader_review,
+      </if>
+      <if test="deptLeaderIscheck != null" >
+        dept_leader_ischeck,
+      </if>
+      <if test="deptLeaderChecktime != null" >
+        dept_leader_checktime,
+      </if>
+      <if test="attribute1 != null" >
+        attribute1,
+      </if>
+      <if test="attribute2 != null" >
+        attribute2,
+      </if>
+      <if test="attribute3 != null" >
+        attribute3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="elId != null" >
+        #{elId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="eId != null" >
+        #{eId,jdbcType=INTEGER},
+      </if>
+      <if test="eName != null" >
+        #{eName,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=INTEGER},
+      </if>
+      <if test="dutyMemo != null" >
+        #{dutyMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="positive != null" >
+        #{positive,jdbcType=INTEGER},
+      </if>
+      <if test="positiveMemo != null" >
+        #{positiveMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="discipline != null" >
+        #{discipline,jdbcType=INTEGER},
+      </if>
+      <if test="disciplineMemo != null" >
+        #{disciplineMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="extraction != null" >
+        #{extraction,jdbcType=INTEGER},
+      </if>
+      <if test="extractionMemo != null" >
+        #{extractionMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="understanding != null" >
+        #{understanding,jdbcType=INTEGER},
+      </if>
+      <if test="understandingMemo != null" >
+        #{understandingMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="expression != null" >
+        #{expression,jdbcType=INTEGER},
+      </if>
+      <if test="expressionMemo != null" >
+        #{expressionMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="plan != null" >
+        #{plan,jdbcType=INTEGER},
+      </if>
+      <if test="planMemo != null" >
+        #{planMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperation != null" >
+        #{cooperation,jdbcType=INTEGER},
+      </if>
+      <if test="cooperationMemo != null" >
+        #{cooperationMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=INTEGER},
+      </if>
+      <if test="otherMemo != null" >
+        #{otherMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="t1Id != null" >
+        #{t1Id,jdbcType=INTEGER},
+      </if>
+      <if test="t1Name != null" >
+        #{t1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="t1Review != null" >
+        #{t1Review,jdbcType=VARCHAR},
+      </if>
+      <if test="t1Ischeck != null" >
+        #{t1Ischeck,jdbcType=INTEGER},
+      </if>
+      <if test="t1Checktime != null" >
+        #{t1Checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="t2Id != null" >
+        #{t2Id,jdbcType=INTEGER},
+      </if>
+      <if test="t2Name != null" >
+        #{t2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="t2Review != null" >
+        #{t2Review,jdbcType=VARCHAR},
+      </if>
+      <if test="t2Ischeck != null" >
+        #{t2Ischeck,jdbcType=INTEGER},
+      </if>
+      <if test="t2Checktime != null" >
+        #{t2Checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptLeaderId != null" >
+        #{deptLeaderId,jdbcType=INTEGER},
+      </if>
+      <if test="deptLeaderName != null" >
+        #{deptLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeaderReview != null" >
+        #{deptLeaderReview,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeaderIscheck != null" >
+        #{deptLeaderIscheck,jdbcType=INTEGER},
+      </if>
+      <if test="deptLeaderChecktime != null" >
+        #{deptLeaderChecktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null" >
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hccnnet.reviewsys.domain.Evaluation" >
+    update evaluation
+    <set >
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="eId != null" >
+        e_id = #{eId,jdbcType=INTEGER},
+      </if>
+      <if test="eName != null" >
+        e_name = #{eName,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=INTEGER},
+      </if>
+      <if test="dutyMemo != null" >
+        duty_memo = #{dutyMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="positive != null" >
+        positive = #{positive,jdbcType=INTEGER},
+      </if>
+      <if test="positiveMemo != null" >
+        positive_memo = #{positiveMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="discipline != null" >
+        discipline = #{discipline,jdbcType=INTEGER},
+      </if>
+      <if test="disciplineMemo != null" >
+        discipline_memo = #{disciplineMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="extraction != null" >
+        extraction = #{extraction,jdbcType=INTEGER},
+      </if>
+      <if test="extractionMemo != null" >
+        extraction_memo = #{extractionMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="understanding != null" >
+        understanding = #{understanding,jdbcType=INTEGER},
+      </if>
+      <if test="understandingMemo != null" >
+        understanding_memo = #{understandingMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="expression != null" >
+        expression = #{expression,jdbcType=INTEGER},
+      </if>
+      <if test="expressionMemo != null" >
+        expression_memo = #{expressionMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="plan != null" >
+        plan = #{plan,jdbcType=INTEGER},
+      </if>
+      <if test="planMemo != null" >
+        plan_memo = #{planMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperation != null" >
+        cooperation = #{cooperation,jdbcType=INTEGER},
+      </if>
+      <if test="cooperationMemo != null" >
+        cooperation_memo = #{cooperationMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=INTEGER},
+      </if>
+      <if test="otherMemo != null" >
+        other_memo = #{otherMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="t1Id != null" >
+        t1_id = #{t1Id,jdbcType=INTEGER},
+      </if>
+      <if test="t1Name != null" >
+        t1_name = #{t1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="t1Review != null" >
+        t1_review = #{t1Review,jdbcType=VARCHAR},
+      </if>
+      <if test="t1Ischeck != null" >
+        t1_ischeck = #{t1Ischeck,jdbcType=INTEGER},
+      </if>
+      <if test="t1Checktime != null" >
+        t1_checktime = #{t1Checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="t2Id != null" >
+        t2_id = #{t2Id,jdbcType=INTEGER},
+      </if>
+      <if test="t2Name != null" >
+        t2_name = #{t2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="t2Review != null" >
+        t2_review = #{t2Review,jdbcType=VARCHAR},
+      </if>
+      <if test="t2Ischeck != null" >
+        t2_ischeck = #{t2Ischeck,jdbcType=INTEGER},
+      </if>
+      <if test="t2Checktime != null" >
+        t2_checktime = #{t2Checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptLeaderId != null" >
+        dept_leader_id = #{deptLeaderId,jdbcType=INTEGER},
+      </if>
+      <if test="deptLeaderName != null" >
+        dept_leader_name = #{deptLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeaderReview != null" >
+        dept_leader_review = #{deptLeaderReview,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeaderIscheck != null" >
+        dept_leader_ischeck = #{deptLeaderIscheck,jdbcType=INTEGER},
+      </if>
+      <if test="deptLeaderChecktime != null" >
+        dept_leader_checktime = #{deptLeaderChecktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null" >
+        attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        attribute3 = #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where el_id = #{elId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hccnnet.reviewsys.domain.Evaluation" >
+    update evaluation
+    set dept_id = #{deptId,jdbcType=INTEGER},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      e_id = #{eId,jdbcType=INTEGER},
+      e_name = #{eName,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=INTEGER},
+      duty_memo = #{dutyMemo,jdbcType=VARCHAR},
+      positive = #{positive,jdbcType=INTEGER},
+      positive_memo = #{positiveMemo,jdbcType=VARCHAR},
+      discipline = #{discipline,jdbcType=INTEGER},
+      discipline_memo = #{disciplineMemo,jdbcType=VARCHAR},
+      extraction = #{extraction,jdbcType=INTEGER},
+      extraction_memo = #{extractionMemo,jdbcType=VARCHAR},
+      understanding = #{understanding,jdbcType=INTEGER},
+      understanding_memo = #{understandingMemo,jdbcType=VARCHAR},
+      expression = #{expression,jdbcType=INTEGER},
+      expression_memo = #{expressionMemo,jdbcType=VARCHAR},
+      plan = #{plan,jdbcType=INTEGER},
+      plan_memo = #{planMemo,jdbcType=VARCHAR},
+      cooperation = #{cooperation,jdbcType=INTEGER},
+      cooperation_memo = #{cooperationMemo,jdbcType=VARCHAR},
+      other = #{other,jdbcType=INTEGER},
+      other_memo = #{otherMemo,jdbcType=VARCHAR},
+      total = #{total,jdbcType=INTEGER},
+      t1_id = #{t1Id,jdbcType=INTEGER},
+      t1_name = #{t1Name,jdbcType=VARCHAR},
+      t1_review = #{t1Review,jdbcType=VARCHAR},
+      t1_ischeck = #{t1Ischeck,jdbcType=INTEGER},
+      t1_checktime = #{t1Checktime,jdbcType=TIMESTAMP},
+      t2_id = #{t2Id,jdbcType=INTEGER},
+      t2_name = #{t2Name,jdbcType=VARCHAR},
+      t2_review = #{t2Review,jdbcType=VARCHAR},
+      t2_ischeck = #{t2Ischeck,jdbcType=INTEGER},
+      t2_checktime = #{t2Checktime,jdbcType=TIMESTAMP},
+      dept_leader_id = #{deptLeaderId,jdbcType=INTEGER},
+      dept_leader_name = #{deptLeaderName,jdbcType=VARCHAR},
+      dept_leader_review = #{deptLeaderReview,jdbcType=VARCHAR},
+      dept_leader_ischeck = #{deptLeaderIscheck,jdbcType=INTEGER},
+      dept_leader_checktime = #{deptLeaderChecktime,jdbcType=TIMESTAMP},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      attribute3 = #{attribute3,jdbcType=VARCHAR}
+    where el_id = #{elId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByTeacherId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from evaluation e
+    where (
+    e.t1_id = #{eId,jdbcType=INTEGER}
+    OR e.t2_id = #{eId,jdbcType=INTEGER}
+    OR e.dept_leader_id = #{eId,jdbcType=INTEGER}
+    )
+    LIMIT #{start},#{offset}
+  </select>
+  <select id="selectCountByTeacherId" resultType="java.lang.Integer" >
+    select
+    count(e.el_id)
+    from evaluation e
+    where (
+    e.t1_id = #{eId,jdbcType=INTEGER}
+    OR e.t2_id = #{eId,jdbcType=INTEGER}
+    OR e.dept_leader_id = #{eId,jdbcType=INTEGER}
+    )
+  </select>
+  <select id="selectAllEl" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from evaluation
+    LIMIT #{start},#{offset}
+  </select>
+  <select id="selectAllElCount"  resultType="java.lang.Integer" >
+    select
+    COUNT(el_id)
+    from evaluation
+  </select>
+</mapper>
