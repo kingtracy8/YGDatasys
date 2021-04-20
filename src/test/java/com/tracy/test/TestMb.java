@@ -40,6 +40,9 @@ public class TestMb {
     @Autowired
     INetService iNetService;
 
+    @Autowired
+    IEskService iEskService;
+
 
     @Test
     public void test(){
@@ -54,7 +57,7 @@ public class TestMb {
 
 //        iEvaluationService.selectAllEl(0,10);
 
-        logger.info(JSON.toJSONString(iNetService.selectAll()));
+        logger.info(JSON.toJSONString(iEskService.selectByPrimaryKey(17)));
 
     }
 

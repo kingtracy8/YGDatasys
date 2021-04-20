@@ -18,9 +18,10 @@ public class NetService implements INetService{
     @Autowired
     net_statisticsMapper net_statisticsMapper;
 
+
     @Override
-    public List<net_statistics> selectAll() {
-        return net_statisticsMapper.selectAll();
+    public List<net_statistics> selectAll(Integer start, Integer offset) {
+        return net_statisticsMapper.selectAll(start,offset);
     }
 
     @Override

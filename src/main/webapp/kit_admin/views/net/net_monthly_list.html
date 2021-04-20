@@ -246,14 +246,14 @@
 
 //    异步加载数据后设置echar
             $.ajax({
-                url: "http://134.208.128.210:8080/net/tbinterface?page=1&limit=1" + "&a=" + Math.random(),
+                url: "http://134.208.128.210:8080/net/tbinterface?page=1&limit=5" + "&a=" + Math.random(),
                 type: "GET",
                 async: 'false',
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8', //contentType很重要
                 success: function (result) {
 
-
+                    console.log(result.data[2].da);
                     myChart.setOption({
                         title: {
                             text: '月度宽带激活量'

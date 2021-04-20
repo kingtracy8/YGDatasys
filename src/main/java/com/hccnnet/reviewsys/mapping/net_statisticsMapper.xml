@@ -142,6 +142,7 @@
     <include refid="Base_Column_List" />
     from wls_net_monthly_statistics
     ORDER BY data_time DESC
+    LIMIT #{start},#{offset}
   </select>
   <select id="selectCount"  resultType="java.lang.Integer" >
     select count(order_num) from wls_net_monthly_statistics;

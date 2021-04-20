@@ -338,6 +338,10 @@ layui.define(mods, function(exports) {
             component: 'views/net/net_monthly_list.html',
             name: 'Test'
         }, {
+            path: '/views/esk',
+            component: 'views/esk/esk_list.html',
+            name: 'esk'
+        },{
             path: '/test/app',
             component: 'views/app.html',
             name: '主页test',

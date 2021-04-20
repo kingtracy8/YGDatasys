@@ -29,9 +29,9 @@ public class NetController {
     HashMap EvaluationList(HttpServletRequest request, HttpServletResponse response, @RequestParam("page") String page, @RequestParam("limit") String limit) {
         HashMap map = new HashMap();
 
-        List<net_statistics> net_list = iNetService.selectAll();
         int start = (Integer.valueOf(page)-1)*Integer.valueOf(limit);
         int offset = Integer.valueOf(limit);
+        List<net_statistics> net_list = iNetService.selectAll(start,offset);
 
         map.put("code", 0);
         map.put("msg", "");

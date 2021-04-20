@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface INetService {
 
-    List<net_statistics> selectAll();
+    List<net_statistics> selectAll(Integer start,Integer offset);
 
     Integer selectCount();
 
