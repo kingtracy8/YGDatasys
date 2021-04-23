@@ -57,7 +57,7 @@ public class TestMb {
 
 //        iEvaluationService.selectAllEl(0,10);
 
-        logger.info(JSON.toJSONString(iEskService.selectByPrimaryKey(17)));
+        logger.info(JSON.toJSONString(iEskService.selectAllEskFilter(0,100,"管艳琴","","")));
 
     }
 

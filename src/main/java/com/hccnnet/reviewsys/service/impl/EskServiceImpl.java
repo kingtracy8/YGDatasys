@@ -6,6 +6,8 @@ import com.hccnnet.reviewsys.service.IEskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2021/4/20.
  */
@@ -18,5 +20,21 @@ public class EskServiceImpl implements IEskService {
     @Override
     public esk selectByPrimaryKey(Integer id) {
         return eskMapper.selectByPrimaryKey(id);
+    }
+
+
+    @Override
+    public List<esk> selectAll(Integer start,Integer offset) {
+        return eskMapper.selectAll(start,offset);
+    }
+
+    @Override
+    public Integer selectCount() {
+        return eskMapper.selectCount();
+    }
+
+    @Override
+    public List<esk> selectAllEskFilter(Integer start, Integer offset, String content, String code, String result) {
+        return eskMapper.selectAllEskFilter(start,offset,content,code,result);
     }
 }

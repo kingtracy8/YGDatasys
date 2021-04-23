@@ -114,4 +114,39 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from esk_list
+    ORDER BY id desc
+    LIMIT #{start},#{offset};
+  </select>
+
+  <select id="selectCount"  resultType="java.lang.Integer" >
+    select count(id) from esk_list;
+  </select>
+
+  <select id="selectAllEskFilter" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from esk_list
+    <where>
+      1=1
+      <if test="content != null and content !=''" >
+        AND content like  CONCAT('%',#{content},'%')
+      </if>
+      <if test="code != null and code !=''" >
+        AND code like CONCAT('%',#{code},'%')
+      </if>
+      <if test="result != null and result !=''" >
+        AND result like CONCAT('%',#{result},'%')
+      </if>
+      ORDER BY id desc
+      LIMIT #{start},#{offset}
+    </where>
+
+  </select>
+
+
 </mapper>

@@ -1,121 +1,210 @@
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-xs12">
+            <div class="layui-card">
+
+
+                <div>
+
+                    <blockquote class="layui-elem-quote layui-text" style="margin-top: 10px">
+                        易问账号开通&注销记录
+                    </blockquote>
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                        <legend>条件筛选</legend>
+                    </fieldset>
+
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">单号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="code" id="code_text" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">处理结果</label>
+                                <div class="layui-input-inline">
+                                    <select name="result_text" lay-search="" id="result_text">
+                                        <option value="">直接选择或搜索选择</option>
+                                        <option value="已开通">已开通</option>
+                                        <option value="已注销">已注销</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">内容</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="content_text" id="content_text" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block" style="margin-left: 28%">
+                                <button class="layui-btn" lay-submit="" lay-filter="RegForm">查询</button>
+                                <button type="reset" class="layui-btn layui-btn-primary" lay-filter="ReSet"
+                                        onclick="doReset()">重置
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 模板 -->
 <div class="layui-fluid">
-  <div class="layui-row">
-    <div class="layui-col-xs12">
-      <div class="layui-card">
-        <div class="layui-card-header">表格</div>
-        <div class="layui-card-body">
-          <table id="demo_hash" lay-filter="test"></table>
-          <script type="text/html" id="barDemo_hash">
-              <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
-              <!-- <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a> -->
-              <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        
-              <!-- 这里同样支持 laytpl 语法，如： -->
-              {{# if(d.auth){ }}
-                <a class="layui-btn layui-btn-xs" lay-event="check">审核</a> 
-              {{# } }}
-            </script>
+    <div class="layui-row">
+        <div class="layui-col-xs12">
+            <div class="layui-card">
+                <!--<div class="layui-card-header">易问账号开通注销记录</div>-->
+                <div class="layui-card-body">
+                    <!--<table id="demo_hash" lay-filter="test"></table>-->
+
+
+                    <table class="layui-table"
+                           lay-data="{id:'eskTable',width:2000,height:500,url:'http://134.208.128.210:8080/esk/esktbinterface', page:true}" lay-filter="test">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'arriveTime', width:100%,sort: true,fixed: 'left'}">到单时间</th>
+                            <th lay-data="{field:'code', width:200}">单号</th>
+                            <th lay-data="{field:'content', width:600}">内容</th>
+                            <th lay-data="{field:'result', width:200}">处理结果</th>
+                            <th lay-data="{field:'acceptTime', width:150}">处理时间</th>
+                            <th lay-data="{field:'remark', width:200}">备注</th>
+                        </tr>
+                        </thead>
+                    </table>
+
+
+                    <script type="text/html" id="barDemo_hash">
+                        <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+
+                        <!-- 这里同样支持 laytpl 语法，如： -->
+                        {{# if(d.auth){ }}
+                        <a class="layui-btn layui-btn-xs" lay-event="check">审核</a>
+                        {{# } }}
+                    </script>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+
+<script src="/kit_admin/lib/layui/layui.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/kit_admin/lib/layui/css/modules/laydate/default/laydate.css">
+
 <!-- 脚本 -->
 <script>
-  layui.config({
-    base: '/src/js/'
-  }).use(['jquery', 'mockjs', 'table'], function () {
-    var $ = layui.jquery,
-      layer = layui.layer,
-      table = layui.table;
 
 
-      table.render({
-          method: 'get',
-          done: function () {
-              $('#demo_hash').next().css('height', 'auto');
-          },
-          limit: 20,
-          elem: '#demo_hash',
-          height: 420,
-          url: 'http://134.208.128.210:8080/net/tbinterface', //数据接口
-          page: true, //开启分页
-          cols: [
-              [ //表头
-                  {
-                      field: 'statistics',
-                      title: '发展数量',
-                      width: 130,
-                      sort: true
-                  }, {
-                  field: 'da',
-                  title: '都安',
-                  width: 70
-              }, {
-                  field: 'jcj',
-                  title: '金城江',
-                  width: 75
-              }, {
-                  field: 'yz',
-                  title: '宜州',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'dh',
-                  title: '大化',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'nd',
-                  title: '南丹',
-                  width: 75
-              }, {
-                  field: 'hj',
-                  title: '环江',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'dl',
-                  title: '东兰',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'lc',
-                  title: '罗城',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'bm',
-                  title: '巴马',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'te',
-                  title: '天峨',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'fs',
-                  title: '凤山',
-                  width: 75,
-                  sort: true
-              }, {
-                  field: 'zq',
-                  title: '政企',
-                  width: 75,
-                  sort: true
-              },{
-                  field: 'total',
-                  title: '合计',
-                  width: 75,
-                  sort: true
-              }
-              ]
-          ]
-      });
+    layui.config({
+        base: '/src/js/'
+    }).use(['element', 'table', 'layedit', 'laydate','form'], function () {
+        var $ = layui.jquery,
+            element = layui.element, //Tab的切换功能，切换事件监听等，需要依赖element模块
+            table = layui.table
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+        var form = layui.form;
 
-  });
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+//        table.render({
+//            method: 'get',
+//            done: function () {
+//                $('#demo_hash').next().css('height', 'auto');
+//            },
+//            limit: 10,
+//            elem: '#demo_hash',
+//            width:2000,
+//            height: 500,
+//            url: 'http://134.208.128.210:8080/esk/esktbinterface', //数据接口
+//            page: true, //开启分页
+//            cols: [
+//                [ //表头
+//                    {
+//                        field: 'arriveTime',
+//                        title: '到单时间',
+//                        width: 130,
+//                        sort: true
+//                    }, {
+//                    field: 'code',
+//                    title: '单号',
+//                    width: 200
+//                }, {
+//                    field: 'content',
+//                    title: '内容',
+//                    width: 600
+//                }, {
+//                    field: 'result',
+//                    title: '处理结果',
+//                    width: 200,
+//                    sort: true
+//                }, {
+//                    field: 'acceptTime',
+//                    title: '处理时间',
+//                    width: 150,
+//                    sort: true
+//                }, {
+//                    field: 'remark',
+//                    title: '备注',
+//                    width: 200
+//                }
+//                ]
+//            ]
+//        });
+
+
+        //监听提交
+        form.on('submit(RegForm)', function (data) {
+
+            var content = document.getElementById('content_text');
+            var code = document.getElementById('code_text');
+            var result = document.getElementById('result_text');
+
+            console.log($('#result_text option:selected').val());
+
+
+
+            table.reload('eskTable', {
+                url: 'http://134.208.128.210:8080/esk/esktbinterfaceFilter',
+                where: { //设定异步数据接口的额外参数，任意设
+                    content: content.value,
+                    result: result.value,
+                    code: code.value,
+                }
+            });
+            return false;
+        });
+
+
+
+
+
+    });
+
+
+    function doReset() {
+        window.location.reload();
+    }
+
 </script>
 <!-- 样式 -->
 <style scoped>
