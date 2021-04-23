@@ -48,8 +48,14 @@
                                 <button type="reset" class="layui-btn layui-btn-primary" lay-filter="ReSet"
                                         onclick="doReset()">重置
                                 </button>
+                                <button type="reset" class="layui-btn layui-btn-primary" lay-filter="add"
+                                        onclick="addEsk()">新增
+                                </button>
                             </div>
                         </div>
+
+
+
                     </form>
 
 
@@ -203,6 +209,20 @@
 
     function doReset() {
         window.location.reload();
+    }
+
+
+    function addEsk(){
+
+        var index = layer.open({
+            type: 2,
+            title: '新增账号记录',
+            offset: ['230px', '450px'],
+            area: ['1000px', '500px'],
+            content: 'http://134.208.128.210:8080/kit_admin/views/esk/doAddesk.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+        });
+        layer.iframeAuto(index);    //自适应
+
     }
 
 </script>

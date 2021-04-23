@@ -12,6 +12,8 @@ public interface eskMapper {
 
     int insert(esk record);
 
+    Integer insertEsk(esk record);
+
     int insertSelective(esk record);
 
     esk selectByPrimaryKey(Integer id);

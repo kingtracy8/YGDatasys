@@ -37,4 +37,14 @@ public class EskServiceImpl implements IEskService {
     public List<esk> selectAllEskFilter(Integer start, Integer offset, String content, String code, String result) {
         return eskMapper.selectAllEskFilter(start,offset,content,code,result);
     }
+
+    @Override
+    public Integer insertEsk(esk record) {
+        return eskMapper.insertEsk(record);
+    }
+
+    @Override
+    public int insertSelective(esk record) {
+        return eskMapper.insertEsk(record);
+    }
 }

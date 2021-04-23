@@ -148,5 +148,14 @@
 
   </select>
 
+  <insert id="insertEsk" parameterType="com.hccnnet.reviewsys.domain.esk" >
+    insert into esk_list (arrive_time, code,
+    content, result, accept_time,
+    remark)
+    values (#{arriveTime,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},
+    #{content,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, #{acceptTime,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR})
+  </insert>
+
 
 </mapper>

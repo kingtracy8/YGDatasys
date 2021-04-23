@@ -16,4 +16,8 @@ public interface IEskService {
     Integer selectCount();
 
     List<esk> selectAllEskFilter(Integer start,Integer offset,String content,String code,String result);
+
+    Integer insertEsk(esk record);
+
+    int insertSelective(esk record);
 }

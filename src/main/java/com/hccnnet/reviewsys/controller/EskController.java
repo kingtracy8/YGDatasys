@@ -5,6 +5,8 @@ import com.hccnnet.reviewsys.domain.esk;
 import com.hccnnet.reviewsys.service.IEskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -99,6 +101,18 @@ public class EskController {
         map.put("msg", "");
         map.put("data", eskList);
 
+        return map;
+    }
+
+
+    @RequestMapping(value = "/addEsk", method = RequestMethod.POST)
+    @Transactional(propagation = Propagation.REQUIRED)
+    public @ResponseBody HashMap doAddEsk(HttpServletRequest request, HttpServletResponse response, @RequestBody esk record){
+
+        HashMap map = new HashMap();
+
+        int flag = iEskService.insertSelective(record);
+        map.put("flag", flag);
         return map;
     }
 

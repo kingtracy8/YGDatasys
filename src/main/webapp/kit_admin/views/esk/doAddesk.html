@@ -1,0 +1,146 @@
+<!--Create By: linsong.wei 2021-4-23 10:38:57-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>易问账号开通/注销录入</title>
+    <link rel="stylesheet" href="/kit_admin/lib/layui/css/layui.css">
+    <script src="/kit_admin/lib/layui/layui.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<blockquote class="layui-elem-quote layui-text" style="margin-top: 10px">
+    请在此页面录入易问开通/注销记录。
+</blockquote>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>请您录入以下信息</legend>
+</fieldset>
+
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">单号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="code" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-inline">
+                <input type="text" name="content" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline">
+                <input type="text" name="remark" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <div class="layui-inline">
+                <label class="layui-form-label">处理结果</label>
+                <div class="layui-input-inline">
+                    <select name="result" lay-search="" id="result_text">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="已开通">已开通</option>
+                        <option value="已注销">已注销</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">处理时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="acceptTime" id="acceptTime" lay-verify="date" placeholder="yyyy-MM-dd"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">到单时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="arriveTime" id="arriveTime" lay-verify="date" placeholder="yyyy-MM-dd"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block" style="text-align: center;margin-right: 19%">
+            <button class="layui-btn" lay-submit="" lay-filter="AddEskForm">添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    layui.use(['form', 'laydate', 'layedit'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+
+        //日期
+        laydate.render({
+            elem: '#acceptTime'
+            ,theme: '#393D49'
+            ,trigger: 'click'
+
+        });
+
+        laydate.render({
+            elem: '#arriveTime'
+            ,theme: '#393D49'
+            ,trigger: 'click'
+        });
+
+
+        form.on('submit(AddEskForm)', function (data) {
+
+//            layer.alert(JSON.stringify(data.field));
+            $.ajax({
+                url: "http://134.208.128.210:8080/esk/addEsk",
+                type: "POST",
+                data: JSON.stringify(data.field), //转JSON字符串
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8', //contentType很重要
+                success: function (result) {
+                    console.log(result.flag);
+                    if (result.flag == 1) {
+                        layer.msg("录入记录成功!");
+                        //调用到父页面layui的控件
+                        parent.layui.table.reload('eskTable', {
+                            url: 'http://134.208.128.210:8080/esk/esktbinterface'
+                        });
+                        //获得父控件的弹层并设置关闭时间
+                        var index = parent.layer.getFrameIndex(window.name);
+                        setTimeout(function () {
+                            parent.layer.close(index)
+                        }, 1000);
+
+//                        window.location.reload();
+                    }
+                }, error: function (XMLHttpRequest, textStatus) {
+                    layer.alert("操作失败!请重试！");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+
+</body>
+</html>
