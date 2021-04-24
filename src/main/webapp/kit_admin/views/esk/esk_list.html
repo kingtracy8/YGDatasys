@@ -1,105 +1,111 @@
-<div class="layui-fluid">
-    <div class="layui-row">
-        <div class="layui-col-xs12">
-            <div class="layui-card">
+<div class="layui-col-md12">
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-xs12">
+                <div class="layui-card">
 
 
-                <div>
+                    <div>
 
-                    <blockquote class="layui-elem-quote layui-text" style="margin-top: 10px">
-                        易问账号开通&注销记录
-                    </blockquote>
-                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                        <legend>条件筛选</legend>
-                    </fieldset>
+                        <blockquote class="layui-elem-quote layui-text" style="margin-top: 10px">
+                            易问账号开通&注销记录
+                        </blockquote>
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend>条件筛选</legend>
+                        </fieldset>
 
-                    <form class="layui-form" action="">
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">单号</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="code" id="code_text" autocomplete="off"
-                                           class="layui-input">
+                        <form class="layui-form" action="">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">单号</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="code" id="code_text" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">处理结果</label>
+                                    <div class="layui-input-inline">
+                                        <select name="result_text" lay-search="" id="result_text">
+                                            <option value="">直接选择或搜索选择</option>
+                                            <option value="已开通">已开通</option>
+                                            <option value="已注销">已注销</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">内容</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="content_text" id="content_text" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">备注</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="remark_text" id="remark_text" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">处理结果</label>
-                                <div class="layui-input-inline">
-                                    <select name="result_text" lay-search="" id="result_text">
-                                        <option value="">直接选择或搜索选择</option>
-                                        <option value="已开通">已开通</option>
-                                        <option value="已注销">已注销</option>
-                                    </select>
+
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block" style="margin-left: 28%">
+                                    <button class="layui-btn" lay-submit="" lay-filter="RegForm">查询</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary" lay-filter="ReSet"
+                                            onclick="doReset()">重置
+                                    </button>
+                                    <button type="reset" class="layui-btn layui-btn-primary" lay-filter="add"
+                                            onclick="addEsk()">新增
+                                    </button>
                                 </div>
                             </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">内容</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="content_text" id="content_text" autocomplete="off"
-                                           class="layui-input">
-                                </div>
-                            </div>
-                        </div>
 
 
-                        <div class="layui-form-item">
-                            <div class="layui-input-block" style="margin-left: 28%">
-                                <button class="layui-btn" lay-submit="" lay-filter="RegForm">查询</button>
-                                <button type="reset" class="layui-btn layui-btn-primary" lay-filter="ReSet"
-                                        onclick="doReset()">重置
-                                </button>
-                                <button type="reset" class="layui-btn layui-btn-primary" lay-filter="add"
-                                        onclick="addEsk()">新增
-                                </button>
-                            </div>
-                        </div>
+                        </form>
 
 
-
-                    </form>
+                    </div>
 
 
                 </div>
-
-
             </div>
         </div>
     </div>
-</div>
-<!-- 模板 -->
-<div class="layui-fluid">
-    <div class="layui-row">
-        <div class="layui-col-xs12">
-            <div class="layui-card">
-                <!--<div class="layui-card-header">易问账号开通注销记录</div>-->
-                <div class="layui-card-body">
-                    <!--<table id="demo_hash" lay-filter="test"></table>-->
+
+    <!-- 模板 -->
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-xs12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <table class="layui-table"
+                               lay-data="{id:'eskTable',width:2000,height:500,url:'http://134.208.128.210:8080/esk/esktbinterface', page:true}"
+                               lay-filter="test">
+                            <thead>
+                            <tr>
+                                <th lay-data="{field:'arriveTime', width:150,sort: true,fixed: 'left'}">到单时间</th>
+                                <th lay-data="{field:'code', width:200}">单号</th>
+                                <th lay-data="{field:'content', width:600}">内容</th>
+                                <th lay-data="{field:'result', width:200}">处理结果</th>
+                                <th lay-data="{field:'acceptTime', width:150}">处理时间</th>
+                                <th lay-data="{field:'remark', width:200}">备注</th>
+                            </tr>
+                            </thead>
+                        </table>
 
 
-                    <table class="layui-table"
-                           lay-data="{id:'eskTable',width:2000,height:500,url:'http://134.208.128.210:8080/esk/esktbinterface', page:true}" lay-filter="test">
-                        <thead>
-                        <tr>
-                            <th lay-data="{field:'arriveTime', width:100%,sort: true,fixed: 'left'}">到单时间</th>
-                            <th lay-data="{field:'code', width:200}">单号</th>
-                            <th lay-data="{field:'content', width:600}">内容</th>
-                            <th lay-data="{field:'result', width:200}">处理结果</th>
-                            <th lay-data="{field:'acceptTime', width:150}">处理时间</th>
-                            <th lay-data="{field:'remark', width:200}">备注</th>
-                        </tr>
-                        </thead>
-                    </table>
+                        <script type="text/html" id="barDemo_hash">
+                            <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 
-
-                    <script type="text/html" id="barDemo_hash">
-                        <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
-                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-
-                        <!-- 这里同样支持 laytpl 语法，如： -->
-                        {{# if(d.auth){ }}
-                        <a class="layui-btn layui-btn-xs" lay-event="check">审核</a>
-                        {{# } }}
-                    </script>
+                            <!-- 这里同样支持 laytpl 语法，如： -->
+                            {{# if(d.auth){ }}
+                            <a class="layui-btn layui-btn-xs" lay-event="check">审核</a>
+                            {{# } }}
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,7 +121,7 @@
 
     layui.config({
         base: '/src/js/'
-    }).use(['element', 'table', 'layedit', 'laydate','form'], function () {
+    }).use(['element', 'table', 'layedit', 'laydate', 'form'], function () {
         var $ = layui.jquery,
             element = layui.element, //Tab的切换功能，切换事件监听等，需要依赖element模块
             table = layui.table
@@ -184,9 +190,9 @@
             var content = document.getElementById('content_text');
             var code = document.getElementById('code_text');
             var result = document.getElementById('result_text');
+            var remark = document.getElementById('remark_text');
 
-            console.log($('#result_text option:selected').val());
-
+//            console.log($('#result_text option:selected').val());
 
 
             table.reload('eskTable', {
@@ -195,13 +201,11 @@
                     content: content.value,
                     result: result.value,
                     code: code.value,
+                    remark: remark.value,
                 }
             });
             return false;
         });
-
-
-
 
 
     });
@@ -212,7 +216,7 @@
     }
 
 
-    function addEsk(){
+    function addEsk() {
 
         var index = layer.open({
             type: 2,

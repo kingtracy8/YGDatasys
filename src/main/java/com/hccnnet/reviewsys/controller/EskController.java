@@ -62,6 +62,7 @@ public class EskController {
         String content = null;
         String code = null;
         String result = null;
+        String remark = null;
 
         esk po = new esk();
 
@@ -73,6 +74,7 @@ public class EskController {
             System.out.println(content);
             code = URLDecoder.decode(request.getParameter("code"),"utf-8");
             result = URLDecoder.decode(request.getParameter("result"),"utf-8");
+            remark = URLDecoder.decode(request.getParameter("remark"),"utf-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }catch (NullPointerException e){
@@ -80,6 +82,7 @@ public class EskController {
             po.setContent("");
             po.setCode("");
             po.setResult("");
+            po.setRemark("");
         }
 
         // 如果没有空指针异常
@@ -92,8 +95,11 @@ public class EskController {
         if (!result.equals(null)) {
             po.setResult(result);
         }
+        if (!remark.equals(null)) {
+            po.setRemark(remark);
+        }
 
-        List<esk> eskList = iEskService.selectAllEskFilter(start,offset,po.getContent(),po.getCode(),po.getResult());
+        List<esk> eskList = iEskService.selectAllEskFilter(start,offset,po.getContent(),po.getCode(),po.getResult(),po.getRemark());
         int count = 0;
         count = eskList.size();
         map.put("count", count);

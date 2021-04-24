@@ -142,6 +142,9 @@
       <if test="result != null and result !=''" >
         AND result like CONCAT('%',#{result},'%')
       </if>
+      <if test="remark != null and remark !=''" >
+        AND remark like CONCAT('%',#{remark},'%')
+      </if>
       ORDER BY id desc
       LIMIT #{start},#{offset}
     </where>

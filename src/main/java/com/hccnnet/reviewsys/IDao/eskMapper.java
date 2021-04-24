@@ -26,5 +26,5 @@ public interface eskMapper {
 
     Integer selectCount();
 
-    List<esk> selectAllEskFilter(@Param("start") Integer start, @Param("offset") Integer offset, @Param("content") String content, @Param("code") String code, @Param("result") String result);
+    List<esk> selectAllEskFilter(@Param("start") Integer start, @Param("offset") Integer offset, @Param("content") String content, @Param("code") String code, @Param("result") String result,@Param("remark") String remark);
 }

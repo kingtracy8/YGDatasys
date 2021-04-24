@@ -34,8 +34,8 @@ public class EskServiceImpl implements IEskService {
     }
 
     @Override
-    public List<esk> selectAllEskFilter(Integer start, Integer offset, String content, String code, String result) {
-        return eskMapper.selectAllEskFilter(start,offset,content,code,result);
+    public List<esk> selectAllEskFilter(Integer start, Integer offset, String content, String code, String result,String remark) {
+        return eskMapper.selectAllEskFilter(start,offset,content,code,result,remark);
     }
 
     @Override
