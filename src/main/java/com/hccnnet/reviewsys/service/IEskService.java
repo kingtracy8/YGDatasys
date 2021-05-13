@@ -20,4 +20,6 @@ public interface IEskService {
     Integer insertEsk(esk record);
 
     int insertSelective(esk record);
+
+    Integer selectCountFilter(Integer start,Integer offset,String content,String code,String result,String remark);
 }

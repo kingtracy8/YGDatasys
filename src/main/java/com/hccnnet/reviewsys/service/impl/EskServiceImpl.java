@@ -47,4 +47,9 @@ public class EskServiceImpl implements IEskService {
     public int insertSelective(esk record) {
         return eskMapper.insertEsk(record);
     }
+
+    @Override
+    public Integer selectCountFilter(Integer start, Integer offset, String content, String code, String result, String remark) {
+        return eskMapper.selectCountFilter(start,offset,content,code,result,remark);
+    }
 }

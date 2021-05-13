@@ -342,6 +342,10 @@ layui.define(mods, function(exports) {
             component: 'views/esk/esk_list.html',
             name: 'esk'
         },{
+            path: '/views/uploadPic',
+            component: 'views/Files/uploadPic.html',
+            name: 'uploadPic'
+        },{
             path: '/test/app',
             component: 'views/app.html',
             name: '主页test',

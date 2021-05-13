@@ -101,7 +101,8 @@ public class EskController {
 
         List<esk> eskList = iEskService.selectAllEskFilter(start,offset,po.getContent(),po.getCode(),po.getResult(),po.getRemark());
         int count = 0;
-        count = eskList.size();
+//        count = eskList.size();
+        count = iEskService.selectCountFilter(start,offset,content,code,result,remark);
         map.put("count", count);
         map.put("code", 0);
         map.put("msg", "");
